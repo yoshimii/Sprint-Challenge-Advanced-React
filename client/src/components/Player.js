@@ -1,5 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
+import Player1 from './Player1';
 
 class Player extends React.Component {
     constructor() {
@@ -11,13 +12,16 @@ class Player extends React.Component {
 
     componentDidMount() {
         Axios.get(' http://localhost:5000/api/players').then((res) => {
-            console.log(res.data);
+            this.setState({players: res.data })
         }).catch( err => console.log(err))
     }
 
     render() {
         return(
-           <div>Hello.</div>
+           <section className='players'>
+               <Player1 data={this.state.players} />
+           </section>
+
         )
     };
 }
