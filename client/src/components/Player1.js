@@ -4,24 +4,20 @@ import useFunMode from '../hooks/FunMode';
 function Player1(props) {
     const [ funMode, setFunMode ] = useFunMode();
 
-    const [inputValues, handleClick, handleSubmit] = useFunMode(
-        'greenBackgournd', 
-        {}
-    );
 
-    return (
+    return ([
         <>
         {props.data.map(player => (
-        <div key={player.id} className="player">
-            <button onClick={setFunMode}>Have fun!</button>
+        <div key={player.id} className="player" data-testid='player-div'>
+            <button data-testid='fun-btn' onClick={setFunMode}>Have fun!</button>
          <div>
-            <h3>{player.name}</h3>
+            <h3 data-testid='player-name'>{player.name}</h3>
             <p>{player.country}</p>
           </div>
         </div>
       ))}
         </>
-    )
+    ])
 }
 
 // class Player1 extends React.Component {
